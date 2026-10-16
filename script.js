@@ -5,9 +5,6 @@
 // ======================================================
 
 const CONFIG = {
-  email: "ramakrishnanrcs338@gmail.com",
-  phone: "6379696616",
-
   linkedin: "https://www.linkedin.com/in/ramakrishnan-r-433819347/",
   github: "https://github.com/ramakrishnanrcs338-art",
 
@@ -180,67 +177,7 @@ function configureProjectLink(key) {
 configureProjectLink("projectDemo");
 configureProjectLink("projectSource");
 
-// ======================================================
-// CONTACT DETAILS
-// ======================================================
-
-const emailDisplay = document.querySelector("[data-contact-email]");
-const phoneDisplay = document.querySelector("[data-contact-phone]");
-const contactButton = document.querySelector("[data-contact-button]");
-const contactNote = document.getElementById("contactNote");
-
-function configureContact() {
-  const email = CONFIG.email.trim();
-  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  if (validEmail) {
-    // Display a clickable email address.
-    const emailLink = document.createElement("a");
-    emailLink.href = `mailto:${email}`;
-    emailLink.textContent = email;
-    emailLink.className = "text-link";
-
-    emailDisplay.replaceChildren(emailLink);
-
-    // Enable the main Contact Me button.
-    contactButton.href = `mailto:${email}`;
-    contactButton.removeAttribute("aria-disabled");
-    contactButton.removeAttribute("tabindex");
-
-    contactNote.textContent =
-      "Opens your default email application. Sending depends on your email setup.";
-  } else {
-    emailDisplay.textContent = "Email not configured";
-    contactButton.href = "#contact";
-    contactButton.setAttribute("aria-disabled", "true");
-    contactButton.setAttribute("tabindex", "-1");
-
-    contactNote.textContent =
-      "Add a valid email address in the CONFIG section.";
-  }
-
-  // Configure optional phone contact.
-  const phone = CONFIG.phone.trim();
-
-  if (phone) {
-    const dialable = phone.replace(/[^\d+]/g, "");
-
-    phoneDisplay.textContent = phone;
-
-    if (/^\+?\d{7,15}$/.test(dialable)) {
-      const phoneLink = document.createElement("a");
-      phoneLink.href = `tel:${dialable}`;
-      phoneLink.textContent = phone;
-      phoneLink.className = "text-link";
-
-      phoneDisplay.replaceChildren(phoneLink);
-    }
-  } else {
-    phoneDisplay.textContent = "Optional — not provided";
-  }
-}
-
-configureContact();
+// Contact form is handled by Netlify Forms after deployment.
 
 // ======================================================
 // SCROLL REVEAL ANIMATIONS
